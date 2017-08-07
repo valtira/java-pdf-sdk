@@ -1,5 +1,5 @@
 # java-pdf-sdk
-A Java SDK to the PDF API.
+A Java SDK to the PDF API, you may use the documentation at [Valtira's Portal](https://portal-pdf-api.valtira.com/apis/qpa5b6ufv6-marketplace) to review the operations available to you.  Please note that you will need an API key to successful execute operations on a PDF, please see the section on API keys below.
 
 # Building the client
 Before proceeding, install a [JDK](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html) (must be Java 8 or later) and [Apache Maven](https://maven.apache.org/install.html).
@@ -59,12 +59,12 @@ This will compile the client and package all dependencies into a jar located at 
 To create a client, use the client builder. You can obtain an instance of the builder via a static factory method located on the client interface.
 
 ```java
-PDFAPIClientClientBuilder builder = PDFAPIClient.builder();
+PDFAPIClientBuilder builder = PDFAPI.builder();
 ```
 
 The builder exposes many fluent configuration methods that can be chained to configure a service client. Here's a simple example that sets a few optional configuration options and then builds the service client.
 ```java
-PDFAPIClient client = PDFAPIClient.builder()
+PDFAPI client = PDFAPI.builder()
     .connectionConfiguration(new ConnectionConfiguration()
 	    .maxConnections(100)
 	    .connectionMaxIdleMillis(1000))
@@ -79,16 +79,20 @@ PDFAPIClient client = PDFAPIClient.builder()
 Note that each client created has its own connection pool. It's recommended to treat the clients as long-lived objects. Clients are immutable and thread safe.
 Clients clean up their resources when garbage collected but if you want to explicitly shut down the client you can do the following:
 ```java
-PDFAPIClient client = PDFAPIClient.builder().build();
+PDFAPI client = PDFAPI.builder().build();
 client.shutdown();
 // Client is now unusable
 ```
 ## API keys
-An API key must be provided by the service owner. After they key is available, it can be set via the client builder. It is recommended to treat the API key as sensitive and not hard-code it in your source code.
+You may receive an API key in two ways:
+1. Purchase througe [Amazon Web Services Marketplace](https://aws.amazon.com/marketplace/pp/B06XCR1KLR) OR
+2. You contact [Valtira](mailto:support@valtira.com) for access after registering on the [Valtira Portal](https://portal-pdf-api.valtira.com).
+
+In both cases, you will be able to view your API key on the [Valtira Portal](https://portal-pdf-api.valtira.com) after signing in.
 
 ```java
-PDFAPIClient client = PDFAPIClient.builder()
-    .apiKey("customers-api-key")
+PDFAPI client = PDFAPI.builder()
+    .apiKey("your-api-key")
     .build();
 ```
 
@@ -98,11 +102,11 @@ See [http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys
 
 
 ## Making requests
-After a client is configured and created, you can make a request to the service. A method on the client interface (`PDFAPIClient`) is created for all actions (resource + method) in your API.
+After a client is configured and created, you can make a request to the service. A method on the client interface (`PDFAPI`) is created for all actions (resource + method) in your API.
 
 For each API method, classes are generated that represent the request and response of that API. The request class has setters for any path parameters, query parameters, headers, and payload model that are defined in the API. The response class exposes getters for any modeled headers and for the modeled payload.
 ```java
-PDFAPIClient client = PDFAPIClient.builder().build();
+PDFAPI client = PDFAPI.builder().build();
 PostAssembleResult result = client.postAssemble(new PostAssembleRequest());
 ```
 
@@ -112,7 +116,7 @@ In addition to client-level configuration configured by the builder, each reques
 The request config also allows adding headers and query parameters that aren't modeled by the API.
 
 ```java
-PDFAPIClient client = PDFAPIClient.builder().build();
+PDFAPI client = PDFAPI.builder().build();
 client.postAssemble(new PostAssembleRequest().sdkRequestConfig(
     SdkRequestConfig.builder()
 	.httpRequestTimeout(1500)
@@ -192,7 +196,7 @@ The easiest way to create a custom retry policy is to use the RetryPolicyBuilder
  * The policy below will retry if the cause of the failed request matches any of the exceptions
  * given OR if the HTTP response from the service has one of the provided status codes.
  */
-PDFAPIClient client = PDFAPIClient.builder()
+PDFAPI client = PDFAPI.builder()
         .retryPolicy(RetryPolicyBuilder.standard()
                              .retryOnExceptions(SocketTimeoutException.class)
                              .retryOnStatusCodes(429, 500)
@@ -221,7 +225,7 @@ public static class CustomRetryPolicy implements RetryPolicy {
     }
 }
 // Using a custom retry policy via the builder
-PDFAPIClient client = PDFAPIClient.builder()
+PDFAPI client = PDFAPI.builder()
         .retryPolicy(new CustomRetryPolicy())
         .build();
 ```
@@ -254,7 +258,7 @@ public static class Backoff100MillisecondsStrategy implements BackoffStrategy {
 /**
  * Uses {@link com.amazonaws.retry.v2.SimpleRetryPolicy} to combine a separately implemented RetryCondition and BackoffStrategy.
  */
-PDFAPIClient client = PDFAPIClient.builder()
+PDFAPI client = PDFAPI.builder()
         .retryPolicy(new SimpleRetryPolicy(new RetryOnThrottlingCondition(), new Backoff100MillisecondsStrategy()))
         .build();
 
@@ -262,7 +266,7 @@ PDFAPIClient client = PDFAPIClient.builder()
  * The RetryCondition and BackoffStrategy interfaces are functional interfaces so lambda expressions and method
  * references may also be used. This is equivalent to the above example.
  */
-PDFAPIClient client = PDFAPIClient.builder()
+PDFAPI client = PDFAPI.builder()
         .retryPolicy(new SimpleRetryPolicy(c -> c.httpStatusCode() != null && c.httpStatusCode() == 429,
                                            c -> 100))
         .build();
