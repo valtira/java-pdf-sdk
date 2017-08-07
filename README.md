@@ -1,6 +1,9 @@
 # java-pdf-sdk
 A Java SDK to the PDF API, you may use the documentation at [Valtira's Portal](https://portal-pdf-api.valtira.com/apis/qpa5b6ufv6-marketplace) to review the operations available to you.  Please note that you will need an API key to successful execute operations on a PDF, please see the section on API keys below.
 
+# Need help?
+[Here's a handy link](https://support.valtira.com/hc/en-us/articles/115000787706-Here-s-how-to-find-help-) that will be improved over time with ways to get help.
+
 # Building the client
 Before proceeding, install a [JDK](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html) (must be Java 8 or later) and [Apache Maven](https://maven.apache.org/install.html).
 
