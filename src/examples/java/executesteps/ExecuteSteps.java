@@ -20,7 +20,7 @@ import com.valtira.pdf.api.model.TableCell;
 
 public class ExecuteSteps {
 
-	private static final String DEMO_API_KEY = "of3aFaClmlurthuehiLC4uFo8bJZa8s1HihD5ly2";
+	private static final String DEMO_API_KEY = "<your api key here>";
 	
 	public static void main(String... args) {
 	
@@ -34,28 +34,42 @@ public class ExecuteSteps {
 			    .apiKey(DEMO_API_KEY)
 			    .build();
 		
-		Color fontColor = new Color().r(91).g(143).b(197);
+		// define the blue color for our font for the table below
+		Color blue = new Color().r(91).g(143).b(197);
 		
-		Font cellFont = new Font().size(12).style("BOLD").color(fontColor).url("https://s3.amazonaws.com/bcbsma-lambda-pdf-assets/NotoSansCJKsc-Regular.otf");
+		// setup our font as size 12, style BOLD, color blue and OTF font NotoSans (from Google)
+		Font cellFont = new Font().size(12).style("BOLD").color(blue).url("https://s3.amazonaws.com/bcbsma-lambda-pdf-assets/NotoSansCJKsc-Regular.otf");
 		
+		// add a link to the table cell using the font
 		TableCell cell = new TableCell().font(cellFont).label("Go to Valtira.com").link("http://www.valtira.com");
 		
+		// add one cell to a table to the PDF specified at the template url
 		Table table = new Table().totalWidth(600.0).fixedHeight(16.08).verticalAlignment("MIDDLE").cells(cell).template(new FileLocation().url("https://s3.us-east-2.amazonaws.com/valtira-lambda-pdf-assets/pdf-unit-tests-assets/blank.pdf")).x(56.0).y(467.0);
 		
+		// lets build a form by filling out the CreatedDate field
 		AcroForm form = new AcroForm().template(new FileLocation().url("https://s3.us-east-2.amazonaws.com/valtira-lambda-pdf-assets/pdf-unit-tests-assets/508_BROCH_WITH_CR_DATE.pdf"))
 				.fields(new FieldsItem().name("CreatedDate").value(String.format("Created %s", df.format(new Date()))));
 		
+		// first step, fill out the acro form
 		Step fillAcroForm = new Step().name(Step.Name.FillAcroForm).details(form);
 		
+		// second step, convert some html to pdf
 		Step htmlToPDF = new Step().name(Step.Name.HTMLtoPDF).details(new FileLocation().url("https://s3.us-east-2.amazonaws.com/valtira-lambda-pdf-assets/pdf-unit-tests-assets/test2017-03.html"));
 		
+		// third step, build a table on a pdf
 		Step buildTable = new Step().name(Step.Name.BuildTable).details(table);
 		
+		// step four, combine the three pdfs into one big document
 		Step assemble = new Step().name(Step.Name.Assemble).details(new Assemble().steps(true));
 		
-		// new style syntax - you could build your Step(s) first
+		// let's execute the steps
 		PostExecuteStepsResult result = client.postExecuteSteps(
-				new PostExecuteStepsRequest().steps(new Steps().steps(fillAcroForm).steps(htmlToPDF).steps(buildTable).steps(assemble)));
+				new PostExecuteStepsRequest().steps(
+						new Steps()
+						.steps(fillAcroForm)
+						.steps(htmlToPDF)
+						.steps(buildTable)
+						.steps(assemble)));
 		
 		
 		System.out.println(String.format("The service responded with: %s", result.getResult()));
