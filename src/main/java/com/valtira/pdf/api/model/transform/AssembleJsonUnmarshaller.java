@@ -47,6 +47,10 @@ public class AssembleJsonUnmarshaller implements Unmarshaller<Assemble, JsonUnma
                     context.nextToken();
                     assemble.setSeparator(FileLocationJsonUnmarshaller.getInstance().unmarshall(context));
                 }
+                if (context.testExpression("steps", targetDepth)) {
+                    context.nextToken();
+                    assemble.setSteps(BooleanJsonUnmarshaller.getInstance().unmarshall(context));
+                }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {
                     if (context.getCurrentDepth() <= originalDepth)

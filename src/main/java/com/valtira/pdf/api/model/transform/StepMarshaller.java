@@ -7,7 +7,6 @@ import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
 import com.valtira.pdf.api.model.*;
-
 import com.amazonaws.protocol.*;
 import com.amazonaws.annotation.SdkInternalApi;
 
@@ -17,9 +16,10 @@ import com.amazonaws.annotation.SdkInternalApi;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 @SdkInternalApi
 public class StepMarshaller {
-
-    private static final MarshallingInfo<String> DETAILS_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
-            .marshallLocationName("details").build();
+    
+    private static final MarshallingInfo<StructuredPojo> DETAILS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("details").build();
+    
     private static final MarshallingInfo<String> NAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("name").build();
 
@@ -40,7 +40,7 @@ public class StepMarshaller {
 
         try {
             protocolMarshaller.marshall(step.getDetails(), DETAILS_BINDING);
-            protocolMarshaller.marshall(step.getName(), NAME_BINDING);
+            protocolMarshaller.marshall(step.getNameAsString(), NAME_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

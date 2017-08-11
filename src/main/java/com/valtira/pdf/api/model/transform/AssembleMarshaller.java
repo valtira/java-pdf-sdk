@@ -23,6 +23,8 @@ public class AssembleMarshaller {
             .marshallLocationName("pdfs").build();
     private static final MarshallingInfo<StructuredPojo> SEPARATOR_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("separator").build();
+    private static final MarshallingInfo<Boolean> STEPS_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("steps").build();
 
     private static final AssembleMarshaller instance = new AssembleMarshaller();
 
@@ -42,6 +44,7 @@ public class AssembleMarshaller {
         try {
             protocolMarshaller.marshall(assemble.getPdfs(), PDFS_BINDING);
             protocolMarshaller.marshall(assemble.getSeparator(), SEPARATOR_BINDING);
+            protocolMarshaller.marshall(assemble.getSteps(), STEPS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

@@ -4,7 +4,9 @@
 package com.valtira.pdf.api.model;
 
 import java.io.Serializable;
+
 import javax.annotation.Generated;
+
 import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
@@ -15,15 +17,49 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Step implements Serializable, Cloneable, StructuredPojo {
 
-    private String details;
+	public enum Name {
+		Assemble,
+		FillAcroForm,
+		FillAcroFormBulk,
+		Bookmark,
+		BuildTable,
+		EmbedImage,
+		ExecuteSteps,
+		ExtractText,
+		HTMLtoPDF,
+		StampTable,
+		StampTemplate;
+		
+		@Override
+		public String toString() {
+			
+			switch (this) {
+				case Assemble: return "assemble";
+				case FillAcroForm: return "fill-acro-form";
+				case FillAcroFormBulk:  return "fill-acro-form/bulk";
+				case Bookmark: return "bookmark";
+				case BuildTable: return "build-table";
+				case EmbedImage: return "embed-image";
+				case ExecuteSteps: return "execute-steps";
+				case ExtractText: return "extract-text";
+				case HTMLtoPDF: return "html-to-pdf";
+				case StampTable: return "stamp-table";
+				case StampTemplate: return "stamp-template";
+				default: return "";
+			}			
+		}
+	};
+	
+	
+    private StructuredPojo details;
 
-    private String name;
+    private Name name;
 
     /**
      * @param details
      */
 
-    public void setDetails(String details) {
+    public void setDetails(StructuredPojo details) {
         this.details = details;
     }
 
@@ -31,7 +67,7 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
      * @return
      */
 
-    public String getDetails() {
+    public StructuredPojo getDetails() {
         return this.details;
     }
 
@@ -40,7 +76,7 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public Step details(String details) {
+    public Step details(StructuredPojo details) {
         setDetails(details);
         return this;
     }
@@ -49,7 +85,7 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
      * @param name
      */
 
-    public void setName(String name) {
+    public void setName(Name name) {
         this.name = name;
     }
 
@@ -57,8 +93,12 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
      * @return
      */
 
-    public String getName() {
+    public Name getName() {
         return this.name;
+    }
+    
+    public String getNameAsString() {
+        return this.name.toString();
     }
 
     /**
@@ -66,7 +106,7 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public Step name(String name) {
+    public Step name(Name name) {
         setName(name);
         return this;
     }

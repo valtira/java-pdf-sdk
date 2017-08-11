@@ -28,6 +28,12 @@ public class Table implements Serializable, Cloneable, StructuredPojo {
     private String verticalAlignment;
 
     private java.util.List<Integer> widths;
+    
+    private FileLocation template;
+    
+    private Double x;
+    
+    private Double y;
 
     /**
      * @param border
@@ -262,7 +268,85 @@ public class Table implements Serializable, Cloneable, StructuredPojo {
         setWidths(widths);
         return this;
     }
+    
+    /**
+     * @param template
+     */
 
+    public void setTemplate(FileLocation template) {
+        this.template = template;
+    }
+
+    /**
+     * @return
+     */
+
+    public FileLocation getTemplate() {
+        return this.template;
+    }
+
+    /**
+     * @param template
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Table template(FileLocation template) {
+    	setTemplate(template);
+        return this;
+    }
+
+    /**
+     * @param x
+     */
+
+    public void setX(Double x) {
+        this.x = x;
+    }
+
+    /**
+     * @return
+     */
+
+    public Double getX() {
+        return this.x;
+    }
+
+    /**
+     * @param x
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Table x(Double x) {
+        setX(x);
+        return this;
+    }
+    
+    /**
+     * @param y
+     */
+
+    public void setY(Double y) {
+        this.y = y;
+    }
+
+    /**
+     * @return
+     */
+
+    public Double getY() {
+        return this.y;
+    }
+
+    /**
+     * @param y
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Table y(Double y) {
+        setY(y);
+        return this;
+    }
+    
     /**
      * Returns a string representation of this object; useful for testing and debugging.
      *

@@ -4,9 +4,11 @@
 package com.valtira.pdf.api.model;
 
 import java.io.Serializable;
+
 import javax.annotation.Generated;
-import com.amazonaws.protocol.StructuredPojo;
+
 import com.amazonaws.protocol.ProtocolMarshaller;
+import com.amazonaws.protocol.StructuredPojo;
 
 /**
  * 
@@ -19,6 +21,8 @@ public class Assemble implements Serializable, Cloneable, StructuredPojo {
     private java.util.List<FileLocation> pdfs;
 
     private FileLocation separator;
+    
+    private boolean steps;
 
     /**
      * @return
@@ -86,6 +90,32 @@ public class Assemble implements Serializable, Cloneable, StructuredPojo {
 
     public FileLocation getSeparator() {
         return this.separator;
+    }
+
+    /**
+     * @param separator
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Assemble steps(boolean steps) {
+        setSteps(steps);
+        return this;
+    }
+    
+    /**
+     * @param separator
+     */
+
+    public void setSteps(boolean steps) {
+        this.steps = steps;
+    }
+
+    /**
+     * @return
+     */
+
+    public boolean getSteps() {
+        return this.steps;
     }
 
     /**

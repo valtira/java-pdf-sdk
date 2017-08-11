@@ -10,8 +10,8 @@ import javax.annotation.Generated;
 import com.valtira.pdf.api.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
-
 import com.fasterxml.jackson.core.JsonToken;
+
 import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
@@ -66,6 +66,18 @@ public class TableJsonUnmarshaller implements Unmarshaller<Table, JsonUnmarshall
                 if (context.testExpression("widths", targetDepth)) {
                     context.nextToken();
                     table.setWidths(new ListUnmarshaller<Integer>(context.getUnmarshaller(Integer.class)).unmarshall(context));
+                }
+                if (context.testExpression("template", targetDepth)) {
+                    context.nextToken();
+                    table.setTemplate(FileLocationJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("x", targetDepth)) {
+                    context.nextToken();
+                    table.setX(context.getUnmarshaller(Double.class).unmarshall(context));
+                }
+                if (context.testExpression("y", targetDepth)) {
+                    context.nextToken();
+                    table.setY(context.getUnmarshaller(Double.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

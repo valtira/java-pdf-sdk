@@ -4,11 +4,11 @@
 package com.valtira.pdf.api.model.transform;
 
 import java.util.List;
+
 import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
 import com.valtira.pdf.api.model.*;
-
 import com.amazonaws.protocol.*;
 import com.amazonaws.annotation.SdkInternalApi;
 
@@ -33,6 +33,12 @@ public class TableMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("verticalAlignment").build();
     private static final MarshallingInfo<List> WIDTHS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("widths").build();
+    private static final MarshallingInfo<StructuredPojo> TEMPLATE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("template").build();
+    private static final MarshallingInfo<Double> X_BINDING = MarshallingInfo.builder(MarshallingType.DOUBLE)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("x").build();
+    private static final MarshallingInfo<Double> Y_BINDING = MarshallingInfo.builder(MarshallingType.DOUBLE)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("y").build();
 
     private static final TableMarshaller instance = new TableMarshaller();
 
@@ -57,6 +63,9 @@ public class TableMarshaller {
             protocolMarshaller.marshall(table.getTotalWidth(), TOTALWIDTH_BINDING);
             protocolMarshaller.marshall(table.getVerticalAlignment(), VERTICALALIGNMENT_BINDING);
             protocolMarshaller.marshall(table.getWidths(), WIDTHS_BINDING);
+            protocolMarshaller.marshall(table.getTemplate(), TEMPLATE_BINDING);
+            protocolMarshaller.marshall(table.getX(), X_BINDING);
+            protocolMarshaller.marshall(table.getY(), Y_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

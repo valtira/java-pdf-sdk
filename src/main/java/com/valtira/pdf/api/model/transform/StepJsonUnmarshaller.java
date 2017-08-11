@@ -3,16 +3,19 @@
  */
 package com.valtira.pdf.api.model.transform;
 
-import java.math.*;
+import static com.fasterxml.jackson.core.JsonToken.END_ARRAY;
+import static com.fasterxml.jackson.core.JsonToken.END_OBJECT;
+import static com.fasterxml.jackson.core.JsonToken.FIELD_NAME;
+import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
+import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import javax.annotation.Generated;
 
-import com.valtira.pdf.api.model.*;
-import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
-import com.amazonaws.transform.*;
-
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.transform.JsonUnmarshallerContext;
+import com.amazonaws.transform.Unmarshaller;
 import com.fasterxml.jackson.core.JsonToken;
-import static com.fasterxml.jackson.core.JsonToken.*;
+import com.valtira.pdf.api.model.Step;
 
 /**
  * Step JSON Unmarshaller
@@ -41,11 +44,11 @@ public class StepJsonUnmarshaller implements Unmarshaller<Step, JsonUnmarshaller
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("details", targetDepth)) {
                     context.nextToken();
-                    step.setDetails(context.getUnmarshaller(String.class).unmarshall(context));
+                    step.setDetails(context.getUnmarshaller(StructuredPojo.class).unmarshall(context));
                 }
                 if (context.testExpression("name", targetDepth)) {
                     context.nextToken();
-                    step.setName(context.getUnmarshaller(String.class).unmarshall(context));
+                    step.setName(context.getUnmarshaller(Step.Name.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {
