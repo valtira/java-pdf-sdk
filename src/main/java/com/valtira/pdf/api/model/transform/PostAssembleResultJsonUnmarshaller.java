@@ -38,7 +38,7 @@ public class PostAssembleResultJsonUnmarshaller implements Unmarshaller<PostAsse
             if (token == null)
                 break;
 
-            postAssembleResult.setAssembleResult(AssembleResultJsonUnmarshaller.getInstance().unmarshall(context));
+            postAssembleResult.setResult(AssembleResultJsonUnmarshaller.getInstance().unmarshall(context));
             token = context.nextToken();
         }
 

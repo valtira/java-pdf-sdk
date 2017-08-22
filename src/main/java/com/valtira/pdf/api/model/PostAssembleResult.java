@@ -14,22 +14,22 @@ import javax.annotation.Generated;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PostAssembleResult extends com.amazonaws.opensdk.BaseResult implements Serializable, Cloneable {
 
-    private AssembleResult assembleResult;
+    private AssembleResult result;
 
     /**
      * @param assembleResult
      */
 
-    public void setAssembleResult(AssembleResult assembleResult) {
-        this.assembleResult = assembleResult;
+    public void setResult(AssembleResult assembleResult) {
+        this.result = assembleResult;
     }
 
     /**
      * @return
      */
 
-    public AssembleResult getAssembleResult() {
-        return this.assembleResult;
+    public AssembleResult getResult() {
+        return this.result;
     }
 
     /**
@@ -38,7 +38,7 @@ public class PostAssembleResult extends com.amazonaws.opensdk.BaseResult impleme
      */
 
     public PostAssembleResult assembleResult(AssembleResult assembleResult) {
-        setAssembleResult(assembleResult);
+        setResult(assembleResult);
         return this;
     }
 
@@ -53,8 +53,8 @@ public class PostAssembleResult extends com.amazonaws.opensdk.BaseResult impleme
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (getAssembleResult() != null)
-            sb.append("AssembleResult: ").append(getAssembleResult());
+        if (getResult() != null)
+            sb.append("AssembleResult: ").append(getResult());
         sb.append("}");
         return sb.toString();
     }
@@ -69,9 +69,9 @@ public class PostAssembleResult extends com.amazonaws.opensdk.BaseResult impleme
         if (obj instanceof PostAssembleResult == false)
             return false;
         PostAssembleResult other = (PostAssembleResult) obj;
-        if (other.getAssembleResult() == null ^ this.getAssembleResult() == null)
+        if (other.getResult() == null ^ this.getResult() == null)
             return false;
-        if (other.getAssembleResult() != null && other.getAssembleResult().equals(this.getAssembleResult()) == false)
+        if (other.getResult() != null && other.getResult().equals(this.getResult()) == false)
             return false;
         return true;
     }
@@ -81,7 +81,7 @@ public class PostAssembleResult extends com.amazonaws.opensdk.BaseResult impleme
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode + ((getAssembleResult() == null) ? 0 : getAssembleResult().hashCode());
+        hashCode = prime * hashCode + ((getResult() == null) ? 0 : getResult().hashCode());
         return hashCode;
     }
 

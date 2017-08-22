@@ -38,7 +38,7 @@ public class PostExtractTextResultJsonUnmarshaller implements Unmarshaller<PostE
             if (token == null)
                 break;
 
-            postExtractTextResult.setStringResult(StringResultJsonUnmarshaller.getInstance().unmarshall(context));
+            postExtractTextResult.setResult(StringResultJsonUnmarshaller.getInstance().unmarshall(context));
             token = context.nextToken();
         }
 

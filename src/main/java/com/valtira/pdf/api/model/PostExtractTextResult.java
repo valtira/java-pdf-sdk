@@ -14,22 +14,22 @@ import javax.annotation.Generated;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PostExtractTextResult extends com.amazonaws.opensdk.BaseResult implements Serializable, Cloneable {
 
-    private StringResult stringResult;
+    private StringResult result;
 
     /**
      * @param stringResult
      */
 
-    public void setStringResult(StringResult stringResult) {
-        this.stringResult = stringResult;
+    public void setResult(StringResult stringResult) {
+        this.result = stringResult;
     }
 
     /**
      * @return
      */
 
-    public StringResult getStringResult() {
-        return this.stringResult;
+    public StringResult getResult() {
+        return this.result;
     }
 
     /**
@@ -37,8 +37,8 @@ public class PostExtractTextResult extends com.amazonaws.opensdk.BaseResult impl
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PostExtractTextResult stringResult(StringResult stringResult) {
-        setStringResult(stringResult);
+    public PostExtractTextResult result(StringResult stringResult) {
+        setResult(stringResult);
         return this;
     }
 
@@ -53,8 +53,8 @@ public class PostExtractTextResult extends com.amazonaws.opensdk.BaseResult impl
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (getStringResult() != null)
-            sb.append("StringResult: ").append(getStringResult());
+        if (getResult() != null)
+            sb.append("StringResult: ").append(getResult());
         sb.append("}");
         return sb.toString();
     }
@@ -69,9 +69,9 @@ public class PostExtractTextResult extends com.amazonaws.opensdk.BaseResult impl
         if (obj instanceof PostExtractTextResult == false)
             return false;
         PostExtractTextResult other = (PostExtractTextResult) obj;
-        if (other.getStringResult() == null ^ this.getStringResult() == null)
+        if (other.getResult() == null ^ this.getResult() == null)
             return false;
-        if (other.getStringResult() != null && other.getStringResult().equals(this.getStringResult()) == false)
+        if (other.getResult() != null && other.getResult().equals(this.getResult()) == false)
             return false;
         return true;
     }
@@ -81,7 +81,7 @@ public class PostExtractTextResult extends com.amazonaws.opensdk.BaseResult impl
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode + ((getStringResult() == null) ? 0 : getStringResult().hashCode());
+        hashCode = prime * hashCode + ((getResult() == null) ? 0 : getResult().hashCode());
         return hashCode;
     }
 
